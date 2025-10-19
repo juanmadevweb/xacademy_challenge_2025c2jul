@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table table-hover mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Club</th>
+      <th scope="col">Nationality</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (player of playerS.players; track player.id) {
+        <tr class="table-active">
+      <th scope="row">{{ player.last_name }}</th>
+      <td>{{ player.position }}</td>
+      <td>{{ player.club }}</td>
+      <td>{{ player.nationality }}</td>
+      <td>
+          <button [routerLink]="['/players', player.id]" type="button" class="btn btn-dark btn-sm">Update</button>
+          <button (click)="onDelete(player.id)" type="button" class="btn btn-dark btn-sm ms-2">Delete</button>
+      </td>
+    </tr>
+    } 
+  </tbody>
+</table>
+<button routerLink="/players/create" type="button" class="btn btn-dark">Create Player</button>
+</div>
